@@ -1,0 +1,45 @@
+bool findPair(Node* root, int x) {
+    // Your code here
+    stack<Node *> it1, it2; 
+  
+    // Initializing forward iterator 
+    Node* c = root; 
+    while (c != NULL) 
+        it1.push(c), c = c->left; 
+  
+    // Initializing backward iterator 
+    c = root; 
+    while (c != NULL) 
+        it2.push(c), c = c->right; 
+  
+    // Two pointer technique 
+    while (it1.top() != it2.top()) { 
+  
+        // Variables to store values at 
+        // it1 and it2 
+        int v1 = it1.top()->data, v2 = it2.top()->data; 
+  
+        // Base case 
+        if (v1 + v2 == x) 
+            return true; 
+  
+        // Moving forward pointer 
+        if (v1 + v2 < x) { 
+            c = it1.top()->right; 
+            it1.pop(); 
+            while (c != NULL) 
+                it1.push(c), c = c->left; 
+        } 
+  
+        // Moving backward pointer 
+        else { 
+            c = it2.top()->left; 
+            it2.pop(); 
+            while (c != NULL) 
+                it2.push(c), c = c->right; 
+        } 
+    } 
+  
+    // Case when no pair is found 
+    return false; 
+}
