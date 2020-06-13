@@ -1,0 +1,47 @@
+int countSubtreesWithSumX1(Node* root, 
+                          int& count, int x) 
+{ 
+    // if tree is empty 
+    if (!root) 
+        return 0; 
+  
+    // sum of nodes in the left subtree 
+    int ls = countSubtreesWithSumX1(root->left, count, x); 
+  
+    // sum of nodes in the right subtree 
+    int rs = countSubtreesWithSumX1(root->right, count, x); 
+  
+    // sum of nodes in the subtree rooted 
+    // with 'root->data' 
+    int sum = ls + rs + root->data; 
+  
+    // if true 
+    if (sum == x) 
+        count++; 
+  
+    // return subtree's nodes sum 
+    return sum; 
+} 
+
+
+
+int countSubtreesWithSumX(Node* root, int x)
+{
+    if (!root) 
+        return 0; 
+  
+    int count = 0; 
+  
+    // sum of nodes in the left subtree 
+    int ls = countSubtreesWithSumX1(root->left, count, x); 
+  
+    // sum of nodes in the right subtree 
+    int rs = countSubtreesWithSumX1(root->right, count, x); 
+  
+    // if tree's nodes sum == x 
+    if ((ls + rs + root->data) == x) 
+        count++; 
+  
+    // required count of subtrees 
+    return count;  
+}
