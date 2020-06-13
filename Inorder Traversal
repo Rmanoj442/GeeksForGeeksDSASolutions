@@ -1,0 +1,23 @@
+class Tree
+{
+    // Return a list containing the inorder traversal of the given tree
+    void inorderUtil (Node root, ArrayList<Integer> a) //Utility function
+    {
+        
+       if(root == null){
+           return;
+       }        
+        
+        inorderUtil(root.left,a);
+        a.add (root.data);
+        inorderUtil(root.right, a);
+    }
+    ArrayList<Integer> inOrder(Node root)
+    {
+       ArrayList<Integer> a = new ArrayList<Integer>(0); 
+       inorderUtil (root, a);
+       
+       return a;
+    }
+
+}
