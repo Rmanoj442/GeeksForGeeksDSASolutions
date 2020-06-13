@@ -1,0 +1,15 @@
+void inOrder(Node *root)
+{
+    if(root==NULL)
+    return;
+    //Your code here
+    //Inorder traversal is Left, node, right
+        /* first recur on left child */
+    inOrder(root->left); 
+  
+    /* then print the data of node */
+    cout << root->data << " "; 
+  
+    /* now recur on right child */
+    inOrder(root->right); 
+}
