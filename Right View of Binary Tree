@@ -1,0 +1,19 @@
+int maxlevel=0;
+void printRight(Node *root,int level)
+{
+    if(root==NULL) return;
+    if(maxlevel<level)
+    {
+        cout<<(root->data)<<" ";
+        maxlevel=level;
+    }
+    printRight(root->right,level+1);
+    printRight(root->left,level+1);
+    
+}
+void rightView(Node *root)
+{
+   // Your Code here
+   maxlevel=0;
+   printRight(root,1);
+}
